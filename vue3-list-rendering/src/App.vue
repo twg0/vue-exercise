@@ -1,26 +1,45 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <button @click="handler">
+        Click me!
+    </button>
+    <ul>
+        <!--  객체 구조 분해  -->
+        <li
+            v-for="{id, name} in newFruits"
+            :key="id">
+            {{ name }}-{{ id }}
+        </li>
+    </ul>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import shortid from 'shortid'
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+    data() {
+        return {
+            fruits: ['Apple', 'Banana', 'Cherry']
+        }
+    },
+    computed: {
+        newFruits() {
+            return this.fruits.map(fruit => ({
+                id: shortid.generate(),
+                name: fruit
+            }))
+        }
+    },
+    methods: {
+        handler() {
+            this.fruits.push('Orange')
+        }
+    }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+ul {
+    list-style-type: none;
+    padding: 0;
 }
 </style>
