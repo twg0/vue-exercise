@@ -1,5 +1,6 @@
 <template>
 <!--  클래스  -->
+<!--  active: isActive 의미 : active 클래스는 isActive 에 영향을 받는다  -->
 <!--  isActive 가 초기에는 false 이기 때문에 class 가 연결되지 않지만 true 로 변경되면 진실성에 의해 결정이됨  -->
 <!--  배열도 사용 가능, 유용한지는 모름  -->
     <h1
